@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Learn Japanese">
+    <meta name="description"
+        content="Follow me on my journey to learn Japanese. I'm compiling all resources I'm using to learn Japanese into one resource. I'll update this as I learn more.">
+    <meta name="keywords"
+        content="learn japanese, japanese, how to learn japanese, best way to learn japanese, learn japanese online, how to translate english to japanese, learn japanese free, how long does it take to learn japanese, learn japanese online free, hiragana, katakana, learn japanese fast, learn hiragana, learn katakana, learn japanese alphabet">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="1 days">
+    <meta name="author" content="Aniket Hirpara">
+
+    <title>Learn Japanese</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div style="text-align: start;">
+            <h4>Japanese has 3 writing systems Hiragana, Katakana and Kanji. Hiragana and Katakana are the two types of
+                alphabets in Japanese. Generally, Hiragana is used to write words of Japanese origin, and Katakana to
+                write borrowed vocabulary and foreign names. Kanji however are around 2000 chinese characters used in
+                Japanese writing. </h4>
+            <p>Both Hiragana & Katakana represent sounds, whilst Kanji represents meanings.</p>
+        </div>
+
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
+                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">Hiragana ひらがな</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Katakana カタカナ</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Kanji 感じ</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" style="
+            display: flex;
+            justify-content: center;" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <table class="table" id="hiragojo">
+                    <caption>Gojuon (ごじゅうおん / 五十音)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">a</th>
+                            <th scope="col">i</th>
+                            <th scope="col">u</th>
+                            <th scope="col">e</th>
+                            <th scope="col">o</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hiragojoBody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+        </div>
+    </div>
+
+    <div class="overlay">
+        <div class="overlay2"></div>
+        <div class="aboutWord card">
+
+        </div>
+    </div>
+
+    <footer>Made by <a href="https://anikethirpara.com" target="_blank">Aniket.</a> <a href="sources.html">Click
+            here</a> for the list of sources.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const playLetterFile = (url) => {
+            var audio = new Audio(url);
+            audio.play();
+        }
+
+        const getWordDetails = (word, jpen, speakingGuide) => {
+            document.getElementsByClassName('overlay')[0].classList.add("active")
+            document.getElementsByClassName('overlay2')[0].classList.add("active")
+
+            let aboutWordContent = ` <div id="wordBoxMain">
+                <div class="mainWord"><span title="${word}" class="jp jp-large">${word}</span><span>${jpen}</span></div>
+
+                <div><b>Pronunciation Guide:</b> ${speakingGuide}</div>  
+               <div>
+                <b>Example Pronunciation:</b>
+                <input type="button" class="btn btn-dark" value="sample 1"
+                    onclick="playLetterFile('https://github.com/Ensiss/hiragana-katakana-zshprompt/raw/master/sounds/Hiragana/${jpen ==='wo' ? 'o_2' : (jpen === 'hu' ? 'fu' : jpen)}.mp3')" />
+                    <input type="button" class="btn btn-dark" value="sample 2"
+                    onclick="playLetterFile('https://thejapanesepage.com/wp-content/uploads/2020/01/${jpen === 'hu' ? 'fu' : jpen}.mp3')" /> </div>
+            </div> 
+            <div>
+                <label class="normalText" style="padding-left: 1rem;display: flex;">Letter Varients →</label>
+                <div class="container-fluid otherStyles" style="overflow-y: auto;">
+                    <div class="row flex-row flex-nowrap">
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Dela Gothic One" id="f1">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | DotGothic16" id="f2">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Hachi Maru Pop" id="f3">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Kiwi Maru" id="f4">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Kosugi" id="f5">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Kosugi Maru" id="f6">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | M PLUS 1p" id="f7">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | M PLUS Rounded 1c" id="f8">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | New Tegomin" id="f9">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Noto Sans JP" id="f10">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Noto Serif JP" id="f11">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Potta One" id="f12">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Reggae One" id="f13">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | RocknRoll One" id="f14">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Sawarabi Gothic" id="f15">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Sawarabi Mincho" id="f16">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Shippori Mincho" id="f17">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Shippori Mincho B1" id="f18">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Stick" id="f19">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Train One" id="f20">${word}</div>
+                        <div class="col-xs-4 w-auto jp" title="${jpen} | Yusei Magic" id="f21">${word}</div>
+                    </div>
+                </div>
+
+            </div>
+
+            `
+
+            document.getElementsByClassName('aboutWord')[0].innerHTML = aboutWordContent
+            document.getElementsByClassName('overlay2')[0].addEventListener("click", () => {
+                document.getElementsByClassName('overlay')[0].classList.remove('active')
+                document.getElementsByClassName('overlay2')[0].classList.remove('active')
+            })
+        }
+
+        const loadHiragana = () => {
+            let hiraganaGojuon = " あいうえおkかきくけこsさしすせそtたちつてとnなにぬねのhはひふへほmまみむめもyや0ゆ0よrらりるれろwわ000を*ん".split('')
+            let hiraganaGojuonInWords = [" ", "a", "i", "u", "e", "o", " ", "ka", "ki", "ku", "ke", "ko", " ", "sa",
+                "shi",
+                "su", "se", "so", " ", "ta", "chi", "tsu", "te", "to", " ", "na", "ni", "nu", "ne", "no", " ",
+                "ha",
+                "hi", "hu", "he", "ho", " ", "ma", "mi", "mu", "me", "mo", " ", "ya", " ", "yu", " ", "yo", " ",
+                "ra",
+                "ri", "ru", "re", "ro", " ", "wa", " ", " ", " ", "wo", " ", "n"
+            ]
+            let hiraganaGojuonGuide = [" ", "a as in <u>a</u>cute", "i as in <u>i</u>nk", "oo as in t<u>oo</u>l",
+                "e as in <u>e</u>lephant", "o as in <u>o</u>mega", " ", "kka as in Hanu<u>kka</u>h",
+                "ki as in <u>ki</u>ss", "ku/coo as <u>coo</u>k", "ke as in <u>ke</u>pt",
+                "ko as in <u>ko</u>rea", " ", "sa as in <u>sa</u>una", "shi as in <u>shi</u>p",
+                "su as in <u>su</u>per", "se as in <u>se</u>mi", "so as in <u>so</u>rry", " ",
+                "ta as in <u>ta</u>rnish", "chi as in <u>chi</u>n", "tsu as in <u>tsu</u>nami",
+                "te as in <u>te</u>lephone", "to as in <u>to</u>shiba", " ", "na as in <u>na</u>ilon",
+                "ni as in k<u>ni</u>t", "nu as in <u>nu</u>ke", "ne as in <u>ne</u>st",
+                "no as in <u>no</u>rway", " ", "ha as in hard",
+                "hi as in history", "fu as in fuji", "he as in help", "ho as in home", " ", "ma as in master",
+                "mi as in ministry", "mu/moo as in <moon", "me as in <u>me</u>lody", "mo as <u>mo</u>naco", " ",
+                "ya as in <u>ya</u>rd", " ", "yu as in <u>you</u>", " ", "yo as in <u>yo</u>ga", " ",
+                "ra as in saha<u>ra</u>",
+                "ri as in <u>ri</u>ng", "ru as in <u>ru</u>by", "re as in <u>re</u>st", "ro as in <u>Ro</u>man",
+                " ", "wa as in <u>washing</u>", " ", " ", " ", "wo as in <u>wo</u>", " ", "naas in to<u>n</u>"
+            ]
+
+            let hiraGojoTable = "";
+
+            hiraganaGojuon.forEach((v, i) => {
+                if (v === "0") return hiraGojoTable += `<td class="blackout"></td>`
+                if (i === 0) return hiraGojoTable += `<tr><td scope="row">${v}</td>`
+                if (i % 6 === 0) return hiraGojoTable += `</tr><tr><td scope="row">${v}</td>`
+                if (i === hiraganaGojuon.length - 1) return hiraGojoTable +=
+                    `<td><div class="wordBox" onClick="getWordDetails('${v}','${hiraganaGojuonInWords[i]}', '${hiraganaGojuonGuide[i]}')"><span class="jp">${v}</span> <span>${hiraganaGojuonInWords[i]}</span></div></td></tr>`
+
+                return hiraGojoTable +=
+                    `<td><div class="wordBox" onClick="getWordDetails('${v}','${hiraganaGojuonInWords[i]}', '${hiraganaGojuonGuide[i]}')"><span class="jp">${v}</span> <span>${hiraganaGojuonInWords[i]}</span></div></td>`
+            })
+            document.getElementById('hiragojoBody').innerHTML = hiraGojoTable
+        }
+
+        const loadKatakana = () => {
+            let katakana = ' アイウエオkカキクケコsサシスセソtタチツテトnナニヌネノhハヒフヘホmマミムメモyヤ0ユ0ヨrラリルレロwワ000ヲ*ン'.split('')
+        }
+
+        loadHiragana()
+    </script>
+</body>
+
+</html>

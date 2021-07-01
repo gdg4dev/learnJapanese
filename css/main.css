@@ -1,0 +1,216 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=M+PLUS+1p:wght@400;500&family=Poppins&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DotGothic16&family=Hachi+Maru+Pop&family=Kiwi+Maru&family=Kosugi&family=Kosugi+Maru&family=M+PLUS+Rounded+1c&family=New+Tegomin&family=Noto+Sans+JP&family=Noto+Serif+JP&family=Potta+One&family=Reggae+One&family=RocknRoll+One&family=Sawarabi+Gothic&family=Sawarabi+Mincho&family=Shippori+Mincho&family=Shippori+Mincho+B1&family=Stick&family=Train+One&family=Yusei+Magic&display=swap");
+
+body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.jp {
+    font-family: "Montserrat", "Mplus 1p", "Hiragino Sans",
+        "Hiragino Kaku Gothic Pro", "游ゴシック", "游ゴシック体", YuGothic,
+        "Yu Gothic", "ＭＳ ゴシック", "MS Gothic", sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.jp-large {
+    font-size: 4rem;
+}
+
+.wordBox {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+#hiragojo {
+    max-width: 566px;
+    caption-side: top;
+    border-collapse: collapse;
+}
+
+table thead tr:first-child() {
+    border-collapse: collapse;
+}
+
+table td:not(:first-child) :not(:last-child) {
+    border: 1px solid #000;
+}
+
+table > tbody :first-child() {
+    border-top: 0px;
+}
+
+table > tbody > tr > th {
+    vertical-align: middle;
+}
+
+
+.overlay {
+    visibility: hidden;
+    display: none;
+    z-index: -9999;
+}
+
+.overlay.active {
+    visibility: visible;
+    display: flex;
+    z-index: 9999;
+    justify-self: center;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+}
+
+.aboutWord {
+    height: 50vh;
+    width: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+    z-index: 10001;
+    box-shadow: 7px 3px 20px 0px #5d5d5d;
+}
+
+@media only screen and (max-width: 600px) {
+    .aboutWord {
+        width: 90vw !important;
+    }
+}
+.overlay2 {
+    visibility: hidden;
+    display: none;
+    z-index: 9999;
+}
+
+.overlay2.active {
+    visibility: visible;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#f1 {
+    font-family: "Dela Gothic One", cursive;
+}
+#f2 {
+    font-family: "DotGothic16", sans-serif;
+}
+#f3 {
+    font-family: "Hachi Maru Pop", cursive;
+}
+#f4 {
+    font-family: "Kiwi Maru", serif;
+}
+#f5 {
+    font-family: "Kosugi", sans-serif;
+}
+#f6 {
+    font-family: "Kosugi Maru", sans-serif;
+}
+#f7 {
+    font-family: "M PLUS 1p", sans-serif;
+}
+#f8 {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+}
+#f9 {
+    font-family: "New Tegomin", serif;
+}
+#f10 {
+    font-family: "Noto Sans JP", sans-serif;
+}
+#f11 {
+    font-family: "Noto Serif JP", serif;
+}
+#f12 {
+    font-family: "Potta One", cursive;
+}
+#f13 {
+    font-family: "Reggae One", cursive;
+}
+#f14 {
+    font-family: "RocknRoll One", sans-serif;
+}
+#f15 {
+    font-family: "Sawarabi Gothic", sans-serif;
+}
+#f16 {
+    font-family: "Sawarabi Mincho", sans-serif;
+}
+#f17 {
+    font-family: "Shippori Mincho", serif;
+}
+#f18 {
+    font-family: "Shippori Mincho B1", serif;
+}
+#f19 {
+    font-family: "Stick", sans-serif;
+}
+#f20 {
+    font-family: "Train One", cursive;
+}
+#f21 {
+    font-family: "Yusei Magic", sans-serif;
+}
+
+.otherStyles::-webkit-scrollbar {
+    width: 20px;
+}
+.otherStyles::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+.otherStyles::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+}
+.otherStyles::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+}
+.otherStyles::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+.otherStyles::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+
+.mainWord {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.normalText {
+    font-family: "Poppins", sans-serif;
+}
+
+#wordBoxMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
