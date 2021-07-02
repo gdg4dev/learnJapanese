@@ -128,12 +128,18 @@
                                 <code>k, s, t</code> and <code>h</code> symbols/letters can be changes by placing two
                                 small strokes (dakuten) in
                                 top-right corner of their symbols to make sounds of <code>g, z, d</code> and
-                                <code>b</code> respectively. Pronunciation of じ (shi altered to zi; pronunced as ji) and ぢ(chi altered to zi; pronunced as ji), ず (su altered to zu) and づ (tsu altered to du; pronunced as zu) are the same.
+                                <code>b</code> respectively. Pronunciation of じ (shi altered to zi; pronunced as ji) and
+                                ぢ(chi altered to zi; pronunced as ji), ず (su altered to zu) and づ (tsu altered to du;
+                                pronunced as zu) are the same.
                             </p>
                             <p>Han-Dakuon: Constant <code>h</code> is special if you place a small
-                                circle instead of two small strokes in top-right corner of <code>h</code> symbols; it
-                                makes sound of constant <code>p</code> instead of <code>b</code> or <code>h</code>. Example: <code>ぱ</code></p>
-                            <p>Yoon: Characters which ends with <code>i</code> like <code>ki, shi, chi, ji</code> with their pronounciation altered by adding smaller <code>や (ya), ゆ (yu), よ(yo)</code> letters next to them. For example <code>き (ki) + よ(yo) = きょ(kyo)</code></p>
+                                circle (han-dakuten) instead of two small strokes in top-right corner of <code>h</code>
+                                symbols; it
+                                makes sound of constant <code>p</code> instead of <code>b</code> or <code>h</code>.
+                                Example: <code>ぱ</code></p>
+                            <p>Yoon: Characters which ends with <code>i</code> like <code>ki, shi, chi, ji</code> with
+                                their pronounciation altered by adding smaller <code>や (ya), ゆ (yu), よ(yo)</code>
+                                letters next to them. For example <code>き (ki) + よ(yo) = きょ(kyo)</code></p>
                         </div>
                     </div>
                 </div>
@@ -158,7 +164,8 @@
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" style="
             display: flex;
-            justify-content: center;" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            justify-content: center;     align-items: center;flex-direction: column;" id="pills-home" role="tabpanel"
+                aria-labelledby="pills-home-tab">
                 <table class="table" id="hiragojo">
                     <caption>Gojuon (ごじゅうおん / 五十音)</caption>
                     <thead>
@@ -174,7 +181,51 @@
                     <tbody id="hiragojoBody">
                     </tbody>
                 </table>
+                <table class="table" id="hiradaku">
+                    <caption>Dakuon (だくおん)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">a</th>
+                            <th scope="col">i</th>
+                            <th scope="col">u</th>
+                            <th scope="col">e</th>
+                            <th scope="col">o</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hiradakuBody">
+                    </tbody>
+                </table>
+                <table class="table" id="hirahandaku">
+                    <caption>Han-Dakuon (はんだくおん / 半濁音)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">a</th>
+                            <th scope="col">i</th>
+                            <th scope="col">u</th>
+                            <th scope="col">e</th>
+                            <th scope="col">o</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hirahandakuBody">
+                    </tbody>
+                </table>
+                <table class="table" id="hirayoon">
+                    <caption>Yoon (ようおん / 拗音)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">ya ゃ</th>
+                            <th scope="col">yu ゅ</th>
+                            <th scope="col">yo ょ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hirayoonBody">
+                    </tbody>
+                </table>
             </div>
+            <!-- Katakana -->
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
         </div>
@@ -198,20 +249,23 @@
             audio.play();
         }
 
-        const getWordDetails = (word, jpen, speakingGuide) => {
+        const getWordDetails = (word, jpen, speakingGuide, speakingGuideAvailable, isGoju) => {
             document.getElementsByClassName('overlay')[0].classList.add("active")
             document.getElementsByClassName('overlay2')[0].classList.add("active")
 
             let aboutWordContent = ` <div id="wordBoxMain">
                 <div class="mainWord"><span title="${word}" class="jp jp-large">${word}</span><span>${jpen}</span></div>
-
-                <div><b>Pronunciation Guide:</b> ${speakingGuide}</div>  
+${speakingGuideAvailable ? `<div><b>Pronunciation Guide:</b> ${speakingGuide}</div>` : ''}
+               
                <div>
                 <b>Example Pronunciation:</b>
-                <input type="button" class="btn btn-dark" value="sample 1"
+                ${isGoju ? ` <input type="button" class="btn btn-dark" value="sample 1"
                     onclick="playLetterFile('https://github.com/Ensiss/hiragana-katakana-zshprompt/raw/master/sounds/Hiragana/${jpen ==='wo' ? 'o_2' : (jpen === 'hu' ? 'fu' : jpen)}.mp3')" />
                     <input type="button" class="btn btn-dark" value="sample 2"
-                    onclick="playLetterFile('https://thejapanesepage.com/wp-content/uploads/2020/01/${jpen === 'hu' ? 'fu' : jpen}.mp3')" /> </div>
+                    onclick="playLetterFile('https://thejapanesepage.com/wp-content/uploads/2020/01/${jpen === 'hu' ? 'fu' : jpen}.mp3')" /> </div>` : 
+                    `<input type="button" class="btn btn-dark" value="sample 1"
+                    onclick="playLetterFile('https://a1.marugotoweb.jp/en/assets/sounds/common/${jpen === 'hu' ? 'fu' : (jpen === 'zi' ? 'ji' : jpen)}.mp3')" /> </div>`}
+              
             </div> 
             <div>
                 <label class="normalText" style="padding-left: 1rem;display: flex;">Letter Varients →</label>
@@ -250,46 +304,117 @@
                 document.getElementsByClassName('overlay2')[0].classList.remove('active')
             })
         }
+
+        const GojuonGuide = [" ", "a as in <u>a</u>cute", "i as in <u>i</u>nk", "oo as in t<u>oo</u>l",
+            "e as in <u>e</u>lephant", "o as in <u>o</u>mega", " ", "kka as in Hanu<u>kka</u>h",
+            "ki as in <u>ki</u>ss", "ku/coo as in <u>coo</u>k", "ke as in <u>ke</u>pt",
+            "ko as in <u>ko</u>rea", " ", "sa as in <u>sa</u>una", "shi as in <u>shi</u>p",
+            "su as in <u>su</u>per", "se as in <u>se</u>mi", "so as in <u>so</u>rry", " ",
+            "ta as in <u>ta</u>rnish", "chi as in <u>chi</u>n", "tsu as in <u>tsu</u>nami",
+            "te as in <u>te</u>lephone", "to as in <u>to</u>shiba", " ", "na as in <u>na</u>ilon",
+            "ni as in k<u>ni</u>t", "nu as in <u>nu</u>ke", "ne as in <u>ne</u>st",
+            "no as in <u>no</u>rway", " ", "ha as in hard",
+            "hi as in history", "fu as in fuji", "he as in help", "ho as in home", " ", "ma as in master",
+            "mi as in ministry", "mu/moo as in <u>moo</u>n", "me as in <u>me</u>lody", "mo as <u>mo</u>naco", " ",
+            "ya as in <u>ya</u>rd", " ", "yu as in <u>you</u>", " ", "yo as in <u>yo</u>ga", " ",
+            "ra as in saha<u>ra</u>",
+            "ri as in <u>ri</u>ng", "ru as in <u>ru</u>by", "re as in <u>re</u>st", "ro as in <u>Ro</u>man",
+            " ", "wa as in <u>washing</u>", " ", " ", " ", "wo as in <u>wo</u>", " ", "naas in to<u>n</u>"
+        ]
+        const dakuGuide = [" ", "ga as in <u>ga</u>rment", "gi as in <u>gi</u>ve", "gu as in <u>gu</u>ffy",
+            "ge as in <u>ge</u>t", "go as in <u>go</u>", " ", "za as in <u>za</u>ra",
+            "za/ji as in <u>ji</u>gsaw", "zu/zoo as in <u>zoo</u>m", "ze as in <u>ze</u>nith",
+            "zo as in <u>zo</u>mbie", " ", "da as in <u>da</u>rling", "di/ji as in <u>ji</u>gsaw",
+            "du/zu/zoo as in <u>zoo</u>m", "de as in <u>de</u>vil", "do as in <u>do</u>dge", " ",
+            "ba as in <u>ba</u>sket", "bi as in <u>bi</u>ll", "bu as in <u>bu</u>ll",
+            "be as in <u>be</u>neficiary", "bo as in <u>bo</u>at"
+        ]
+        const handakuGuide = [" ", "pa as in <u>pa</u>pa", "pi as in <u>pi</u>llow", "pu/poo as in <u>poo</u>r",
+            "pe as in <u>pe</u>n", "po as in <u>po</u>p"
+        ]
+        let hiraganaGojuonInWords = [" ", "a", "i", "u", "e", "o", " ", "ka", "ki", "ku", "ke", "ko", " ", "sa",
+            "shi",
+            "su", "se", "so", " ", "ta", "chi", "tsu", "te", "to", " ", "na", "ni", "nu", "ne", "no", " ",
+            "ha",
+            "hi", "hu", "he", "ho", " ", "ma", "mi", "mu", "me", "mo", " ", "ya", " ", "yu", " ", "yo", " ",
+            "ra",
+            "ri", "ru", "re", "ro", " ", "wa", " ", " ", " ", "wo", " ", "n"
+        ]
+        let hiraganadakuonInWords = [" ", "ga", "gi", "gu", "ge", "go", " ", "za", "zi", "zu", "ze", "zo", " ", "da",
+            "di",
+            "du", "de", "do", " ", "ba", "bi", "bu", "be", "bo", ""
+        ]
+        let hiraganahandkuonInWords = [" ", "pa", "pi", "pu", "pe", "po"]
+        let hiraganaYoonInWords = [" ", "kya", "kyu", "kyo"," ", "sha", "shu", "sho", " ", "cha", "chu", "cho",  " ","nya", "nyu", "nyo",  " ","hya", "hyu", "hyo", " ", "mya", "myu", "myo",  " ","rya", "ryu", "ryo", " ", "gya", "gyu", "gyo",  " ","ja", "ju", "jo",  " ","bya", "byu", "byo",  " ","pya", "pyu", "pyo"]
         const loadHiragana = () => {
             let hiraganaGojuon = " あいうえおkかきくけこsさしすせそtたちつてとnなにぬねのhはひふへほmまみむめもyや0ゆ0よrらりるれろwわ000を*ん".split('')
-            let hiraganaGojuonInWords = [" ", "a", "i", "u", "e", "o", " ", "ka", "ki", "ku", "ke", "ko", " ", "sa",
-                "shi",
-                "su", "se", "so", " ", "ta", "chi", "tsu", "te", "to", " ", "na", "ni", "nu", "ne", "no", " ",
-                "ha",
-                "hi", "hu", "he", "ho", " ", "ma", "mi", "mu", "me", "mo", " ", "ya", " ", "yu", " ", "yo", " ",
-                "ra",
-                "ri", "ru", "re", "ro", " ", "wa", " ", " ", " ", "wo", " ", "n"
-            ]
-            let hiraganaGojuonGuide = [" ", "a as in <u>a</u>cute", "i as in <u>i</u>nk", "oo as in t<u>oo</u>l",
-                "e as in <u>e</u>lephant", "o as in <u>o</u>mega", " ", "kka as in Hanu<u>kka</u>h",
-                "ki as in <u>ki</u>ss", "ku/coo as <u>coo</u>k", "ke as in <u>ke</u>pt",
-                "ko as in <u>ko</u>rea", " ", "sa as in <u>sa</u>una", "shi as in <u>shi</u>p",
-                "su as in <u>su</u>per", "se as in <u>se</u>mi", "so as in <u>so</u>rry", " ",
-                "ta as in <u>ta</u>rnish", "chi as in <u>chi</u>n", "tsu as in <u>tsu</u>nami",
-                "te as in <u>te</u>lephone", "to as in <u>to</u>shiba", " ", "na as in <u>na</u>ilon",
-                "ni as in k<u>ni</u>t", "nu as in <u>nu</u>ke", "ne as in <u>ne</u>st",
-                "no as in <u>no</u>rway", " ", "ha as in hard",
-                "hi as in history", "fu as in fuji", "he as in help", "ho as in home", " ", "ma as in master",
-                "mi as in ministry", "mu/moo as in <moon", "me as in <u>me</u>lody", "mo as <u>mo</u>naco", " ",
-                "ya as in <u>ya</u>rd", " ", "yu as in <u>you</u>", " ", "yo as in <u>yo</u>ga", " ",
-                "ra as in saha<u>ra</u>",
-                "ri as in <u>ri</u>ng", "ru as in <u>ru</u>by", "re as in <u>re</u>st", "ro as in <u>Ro</u>man",
-                " ", "wa as in <u>washing</u>", " ", " ", " ", "wo as in <u>wo</u>", " ", "naas in to<u>n</u>"
-            ]
+            let hiraganadakuon = "gがぎぐげごzざじずぜぞdだぢづでどbばびぶべぼ".split('')
+            let hiraganahandkuon = "pぱぴぷぺぽ".split('')
+            let hiraganaYoon = ["き ki", "きゃ","きゅ","きょ","し shi","しゃ","しゅ","しょ","ち chi","ちゃ","ちゅ","ちょ","に ni","にゃ","にゅ","にょ","ひ hi","ひゃ","ひゅ","ひょ","み mi","みゃ","みゅ","みょ","り ri","りゃ","りゅ","りょ","ぎ gi","ぎゃ","ぎゅ","ぎょ","じ ji","じゃ","じゅ","じょ","び bi","びゃ","びゅ","びょ","ぴ pi","ぴゃ","ぴゅ","ぴょ"]
+
+            
 
             let hiraGojoTable = "";
+            let hiradakuTable = "";
+            let hiraHanDakuTable = ""
+            let hiraYoonTable = ""
+
+            hiraganaYoon.forEach((v, i) => {
+                if (v === "0") return hiraYoonTable += `<td class="blackout"></td>`
+                if (i === 0) return hiraYoonTable +=
+                    `<tr><td scope="row">h ->  ${v}</td>`
+                if (i % 4 === 0) return hiraYoonTable +=
+                    `</tr><tr><td scope="row">h -> ${v}</td>`
+                if (i === hiraganaGojuon.length - 1) return hiraYoonTable +=
+                    `<td><div class="wordBox" onClick="getWordDetails('${v}','${hiraganaYoonInWords[i]}', '${handakuGuide[i]}',${false}, ${false})"><span class="jp">${v}</span> <span>${hiraganaYoonInWords[i]}</span></div></td></tr>`
+
+                return hiraYoonTable +=
+                    `<td><div class="wordBox" onClick="getWordDetails('${v}','${hiraganaYoonInWords[i]}', '${handakuGuide[i]}',${false}, ${false})"><span class="jp">${v}</span> <span>${hiraganaYoonInWords[i]}</span></div></td>`
+            })
+
+            hiraganahandkuon.forEach((v, i) => {
+                if (v === "0") return hiraHanDakuTable += `<td class="blackout"></td>`
+                if (i === 0) return hiraHanDakuTable +=
+                    `<tr><td scope="row">h ->  ${v}</td>`
+                if (i % 6 === 0) return hiraHanDakuTable +=
+                    `</tr><tr><td scope="row">h -> ${v}</td>`
+                if (i === hiraganaGojuon.length - 1) return hiraHanDakuTable +=
+                    `<td><div class="wordBox" onClick="getWordDetails('${v}','${hiraganahandkuonInWords[i]}', '${handakuGuide[i]}',${true}, ${false})"><span class="jp">${v}</span> <span>${hiraganahandkuonInWords[i]}</span></div></td></tr>`
+
+                return hiraHanDakuTable +=
+                    `<td><div class="wordBox" onClick="getWordDetails('${v}','${hiraganahandkuonInWords[i]}', '${handakuGuide[i]}',${true}, ${false})"><span class="jp">${v}</span> <span>${hiraganahandkuonInWords[i]}</span></div></td>`
+            })
+
+
+            hiraganadakuon.forEach((v, i) => {
+                if (v === "0") return hiradakuTable += `<td class="blackout"></td>`
+                if (i === 0) return hiradakuTable +=
+                    `<tr><td scope="row">${v === 'g' ? 'k -> g' : (v === 'z' ? 's -> z' : (v === 'd' ? 't -> d' : 'h -> b')) }</td>`
+                if (i % 6 === 0) return hiradakuTable +=
+                    `</tr><tr><td scope="row">${v === 'g' ? 'k -> g' : (v === 'z' ? 's -> z' : (v === 'd' ? 't -> d' : 'h -> b')) }</td>`
+                if (i === hiraganaGojuon.length - 1) return hiradakuTable +=
+                    `<td><div class="wordBox" onClick="getWordDetails('${v}','${hiraganadakuonInWords[i]}', '${dakuGuide[i]}',${true}, ${false} )"><span class="jp">${v}</span> <span>${hiraganadakuonInWords[i]}</span></div></td></tr>`
+
+                return hiradakuTable +=
+                    `<td><div class="wordBox" onClick="getWordDetails('${v}','${hiraganadakuonInWords[i]}', '${dakuGuide[i]}', ${true}, ${false})"><span class="jp">${v}</span> <span>${hiraganadakuonInWords[i]}</span></div></td>`
+            })
+
 
             hiraganaGojuon.forEach((v, i) => {
                 if (v === "0") return hiraGojoTable += `<td class="blackout"></td>`
                 if (i === 0) return hiraGojoTable += `<tr><td scope="row">${v}</td>`
                 if (i % 6 === 0) return hiraGojoTable += `</tr><tr><td scope="row">${v}</td>`
                 if (i === hiraganaGojuon.length - 1) return hiraGojoTable +=
-                    `<td><div class="wordBox" onClick="getWordDetails('${v}','${hiraganaGojuonInWords[i]}', '${hiraganaGojuonGuide[i]}')"><span class="jp">${v}</span> <span>${hiraganaGojuonInWords[i]}</span></div></td></tr>`
+                    `<td><div class="wordBox" onClick="getWordDetails('${v}','${hiraganaGojuonInWords[i]}', '${GojuonGuide[i]}', ${true}, ${true})"><span class="jp">${v}</span> <span>${hiraganaGojuonInWords[i]}</span></div></td></tr>`
 
                 return hiraGojoTable +=
-                    `<td><div class="wordBox" onClick="getWordDetails('${v}','${hiraganaGojuonInWords[i]}', '${hiraganaGojuonGuide[i]}')"><span class="jp">${v}</span> <span>${hiraganaGojuonInWords[i]}</span></div></td>`
+                    `<td><div class="wordBox" onClick="getWordDetails('${v}','${hiraganaGojuonInWords[i]}', '${GojuonGuide[i]}', ${true}, ${true})"><span class="jp">${v}</span> <span>${hiraganaGojuonInWords[i]}</span></div></td>`
             })
+
             document.getElementById('hiragojoBody').innerHTML = hiraGojoTable
+            document.getElementById('hiradakuBody').innerHTML = hiradakuTable
+            document.getElementById('hirahandakuBody').innerHTML = hiraHanDakuTable
+            document.getElementById('hirayoonBody').innerHTML = hiraYoonTable
         }
 
         const loadKatakana = () => {

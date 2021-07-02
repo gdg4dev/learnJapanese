@@ -11,7 +11,7 @@ body {
 }
 
 .jp {
-    font-family: "Mplus 1p";
+    font-family: "Noto Sans JP", sans-serif;
     font-weight: 600;
     font-size: 2rem;
 }
@@ -26,7 +26,7 @@ body {
     cursor: pointer;
 }
 
-#hiragojo {
+#hiragojo, #hiradaku, #hirahandaku, #hirayoon {
     max-width: 566px;
     caption-side: top;
     border-collapse: collapse;
